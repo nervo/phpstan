@@ -32,7 +32,7 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 			$this->createBroker(),
 			$this->getParser(),
 			$this->printer,
-			new FileTypeMapper($this->getParser(), $this->createMock(\Nette\Caching\Cache::class), true),
+			new FileTypeMapper($this->getParser(), $this->createMock(\Nette\Caching\Cache::class)),
 			new TypeSpecifier($this->printer),
 			new FileExcluder($this->createMock(FileHelper::class), []),
 			new \PhpParser\BuilderFactory(),
@@ -118,7 +118,7 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 				$this->assertArrayHasKey('anotherNullableIntegerFromTryCatch', $variables);
 				$this->assertSame('int|null', $variables['anotherNullableIntegerFromTryCatch']->describe());
 
-				$this->assertSame('int|null[]', $variables['nullableIntegers']->describe());
+				$this->assertSame('mixed[]', $variables['nullableIntegers']->describe());
 				$this->assertSame('mixed[]', $variables['mixeds']->describe());
 
 				/** @var $mixeds \PHPStan\Type\ArrayType */
@@ -158,6 +158,8 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 				$this->assertArrayNotHasKey('nonexistentVariableOutsideForeach', $variables);
 				$this->assertArrayHasKey('integerOrNullFromForeach', $variables);
 				$this->assertSame('int|null', $variables['integerOrNullFromForeach']->describe());
+				$this->assertArrayHasKey('notNullableString', $variables);
+				$this->assertSame('string', $variables['notNullableString']->describe());
 			}
 		});
 	}
@@ -1632,7 +1634,7 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 							return $methodReflection->getReturnType();
 						}
 
-						return new ObjectType((string) $arg->class, false);
+						return new ObjectType((string) $arg->class);
 					}
 				},
 			],
@@ -1665,7 +1667,7 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 							return $methodReflection->getReturnType();
 						}
 
-						return new ObjectType((string) $arg->class, false);
+						return new ObjectType((string) $arg->class);
 					}
 				},
 			]

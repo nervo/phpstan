@@ -339,10 +339,7 @@ class NodeScopeResolver
 					&& $argValue->name === 'class'
 					&& $argValue->class instanceof Name
 				) {
-					$resolvedName = $scope->resolveName($argValue->class);
-					if ($resolvedName !== null) {
-						$scopeClass = $resolvedName;
-					}
+					$scopeClass = $scope->resolveName($argValue->class);
 				} elseif ($argValue instanceof Node\Scalar\String_) {
 					$scopeClass = $argValue->value;
 				}
@@ -459,7 +456,7 @@ class NodeScopeResolver
 					) {
 						$switchScope = $switchScope->specifyExpressionType(
 							$switchConditionGetClassExpression,
-							new ObjectType((string) $caseNode->cond->class, false)
+							new ObjectType((string) $caseNode->cond->class)
 						);
 					}
 				}
@@ -666,6 +663,9 @@ class NodeScopeResolver
 		foreach ($types->getSureTypes() as $type) {
 			$scope = $scope->specifyExpressionType($type[0], $type[1]);
 		}
+		foreach ($types->getSureNotTypes() as $type) {
+			$scope = $scope->removeTypeFromExpression($type[0], $type[1]);
+		}
 
 		return $scope;
 	}
@@ -675,6 +675,9 @@ class NodeScopeResolver
 		$types = $this->typeSpecifier->specifyTypesInCondition(new SpecifiedTypes(), $scope, $node);
 		foreach ($types->getSureNotTypes() as $type) {
 			$scope = $scope->specifyExpressionType($type[0], $type[1]);
+		}
+		foreach ($types->getSureTypes() as $type) {
+			$scope = $scope->removeTypeFromExpression($type[0], $type[1]);
 		}
 
 		return $scope;
@@ -757,7 +760,7 @@ class NodeScopeResolver
 					'file_get_contents',
 				], true)
 			) {
-				$scope = $scope->assignVariable('http_response_header', new ArrayType(new StringType(false), false));
+				$scope = $scope->assignVariable('http_response_header', new ArrayType(new StringType(), false));
 			}
 		} elseif ($node instanceof BinaryOp) {
 			$scope = $this->lookForAssigns($scope, $node->left);

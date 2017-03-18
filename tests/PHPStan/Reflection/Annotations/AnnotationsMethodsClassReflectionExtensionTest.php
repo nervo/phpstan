@@ -25,7 +25,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBar' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'methodWithNoReturnType' => [
@@ -45,7 +45,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStatically' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'methodWithNoReturnTypeStatically' => [
@@ -65,7 +65,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'methodWithNoReturnTypeWithDescription' => [
@@ -85,7 +85,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStaticallyWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'methodWithNoReturnTypeStaticallyWithDescription' => [
@@ -120,7 +120,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBar' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'methodWithNoReturnType' => [
@@ -140,7 +140,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStatically' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'methodWithNoReturnTypeStatically' => [
@@ -160,7 +160,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'methodWithNoReturnTypeWithDescription' => [
@@ -180,7 +180,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStaticallyWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'methodWithNoReturnTypeStaticallyWithDescription' => [
@@ -215,7 +215,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBar' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'getIpsum' => [
@@ -240,7 +240,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStatically' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'getIpsumStatically' => [
@@ -265,7 +265,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'getIpsumWithDescription' => [
@@ -290,7 +290,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStaticallyWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'getIpsumStaticallyWithDescription' => [
@@ -320,7 +320,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBar' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'getIpsum' => [
@@ -350,7 +350,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStatically' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'getIpsumStatically' => [
@@ -380,7 +380,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => false,
 					],
 					'getIpsumWithDescription' => [
@@ -410,7 +410,7 @@ class AnnotationsMethodsClassReflectionExtensionTest extends \PHPStan\TestCase
 					],
 					'getFooOrBarStaticallyWithDescription' => [
 						'class' => \AnnotationsMethods\Foo::class,
-						'returnType' => 'AnnotationsMethods\Foo|AnnotationsMethods\Bar',
+						'returnType' => 'AnnotationsMethods\Bar|AnnotationsMethods\Foo',
 						'isStatic' => true,
 					],
 					'getIpsumStaticallyWithDescription' => [

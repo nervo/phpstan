@@ -4,8 +4,7 @@ parameters:
 		- %rootDir%/tests/*/data/*
 		- %rootDir%/tests/PHPStan/Analyser/traits/*
 		- %rootDir%/tests/notAutoloaded/*
-	ignoreErrors:
-		- '#PHPUnit_Framework_MockObject_MockObject given#'
+	ignoreErrors: []
 services:
 	-
 		class: PHPStan\Reflection\PhpParser\PhpParserNameClassReflectionExtension

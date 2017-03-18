@@ -195,6 +195,12 @@ if (doFoo()) {
 	$false = false;
 }
 
+/** @var string|null $nullableString */
+$notNullableString = 'foo';
+if ($notNullableString === null) {
+	return;
+}
+
 try {
 	$inTryTwo = 1;
 } catch (\Exception $e) {

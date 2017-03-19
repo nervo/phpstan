@@ -324,14 +324,6 @@ class Scope
 			return new IntegerType();
 		}
 
-		if ($node instanceof Expr\Ternary) {
-			$elseType = $this->getType($node->else);
-			if ($node->if === null) {
-				return $this->getType($node->cond)->combineWith($elseType);
-			}
-			return $this->getType($node->if)->combineWith($elseType);
-		}
-
 		if ($node instanceof Expr\BinaryOp\Coalesce) {
 			return $this->getType($node->left)->combineWith($this->getType($node->right));
 		}
@@ -483,6 +475,14 @@ class Scope
 		$exprString = $this->printer->prettyPrintExpr($node);
 		if (isset($this->moreSpecificTypes[$exprString])) {
 			return $this->moreSpecificTypes[$exprString];
+		}
+
+		if ($node instanceof Expr\Ternary) {
+			$elseType = $this->getType($node->else);
+			if ($node->if === null) {
+				return $this->getType($node->cond)->combineWith($elseType);
+			}
+			return $this->getType($node->if)->combineWith($elseType);
 		}
 
 		if ($node instanceof Variable && is_string($node->name)) {

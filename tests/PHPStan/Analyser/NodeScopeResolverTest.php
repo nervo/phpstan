@@ -2203,6 +2203,41 @@ class NodeScopeResolverTest extends \PHPStan\TestCase
 		);
 	}
 
+	public function dataTernary(): array
+	{
+		return [
+			[
+				'bool|null',
+				'$boolOrNull',
+			],
+			[
+				'bool',
+				'$boolOrNull !== null ? $boolOrNull : false',
+			],
+			[
+				'bool',
+				'$bool',
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider dataTernary
+	 * @param string $description
+	 * @param string $expression
+	 */
+	public function testTernary(
+		string $description,
+		string $expression
+	)
+	{
+		$this->assertTypes(
+			__DIR__ . '/data/ternary.php',
+			$description,
+			$expression
+		);
+	}
+
 	private function assertTypes(
 		string $file,
 		string $description,

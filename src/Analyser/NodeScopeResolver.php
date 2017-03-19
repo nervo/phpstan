@@ -771,6 +771,13 @@ class NodeScopeResolver
 			$scope = $this->lookForAssigns($scope, $node->expr);
 		} elseif ($node instanceof Ternary) {
 			$scope = $this->lookForAssigns($scope, $node->cond);
+			if ($node->if !== null) {
+				$conditionScope = $this->lookForTypeSpecifications($scope, $node->cond);
+				$ifType = $conditionScope->getType($node->if);
+				$negatedConditionScope = $this->lookForTypeSpecificationsInEarlyTermination($scope, $node->cond);
+				$elseType = $negatedConditionScope->getType($node->else);
+				$scope = $scope->specifyExpressionType($node, $ifType->combineWith($elseType));
+			}
 		} elseif ($node instanceof Array_) {
 			foreach ($node->items as $item) {
 				if ($item->key !== null) {
